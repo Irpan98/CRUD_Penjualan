@@ -68,7 +68,7 @@ class LoginFragment : Fragment() {
         val lastLogin = getLastLogin()?.toList()
         if (lastLogin != null) {
             Log.d(TAG, "getLogin $lastLogin")
-            loginValidation(lastLogin[1], lastLogin[0])
+            loginValidation(lastLogin[0], lastLogin[1])
         }
     }
 
@@ -76,7 +76,6 @@ class LoginFragment : Fragment() {
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
-
 
             loginValidation(email, password)
         }
@@ -98,7 +97,7 @@ class LoginFragment : Fragment() {
 
     private fun loginValidation(email: String, password: String) {
 
-        Log.d(TAG, "login btn clicked")
+        Log.d(TAG, "lloginValidation $email dan $password")
 
         spinKitLoading.visibility = View.VISIBLE
 
