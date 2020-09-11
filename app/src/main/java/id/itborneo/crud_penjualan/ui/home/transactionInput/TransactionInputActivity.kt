@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import id.itborneo.crud_penjualan.R
 import id.itborneo.crud_penjualan.data.local.entity.ItemEntity
@@ -36,20 +38,24 @@ class TransactionInputActivity : AppCompatActivity() {
 
 
         if (getItemIntent == null) {
+            supportActionBar?.title = " Insert Item "
             attachButton {
                 insertItem(it)
             }
 
         } else {
             attachText(getItemIntent)
+            supportActionBar?.title = " Edit Item "
+            btnInsert.text = getString(R.string.edit)
+            btnInsert.icon = ContextCompat.getDrawable(applicationContext, R.drawable.ic_edit)
 
             attachButton {
+
                 it.id = getItemIntent.id
                 editItem(it)
 
             }
         }
-
 
         val factory = ViewModelFactory.getInstance(application)
         viewModel = ViewModelProvider(this, factory)[TransactionInputViewModel::class.java]
@@ -73,14 +79,25 @@ class TransactionInputActivity : AppCompatActivity() {
 
     private fun attachButton(clickListener: (ItemEntity) -> Unit) {
         btnInsert.setOnClickListener {
-            spinKitLoading.visibility = View.VISIBLE
 
-            val item = ItemEntity(
-                edName.text.toString(),
-                edAmount.text.toString(),
-                edPrice.text.toString()
-            )
-            clickListener(item)
+            if (edName.text.isNullOrEmpty() || edAmount.text.isNullOrEmpty()) {
+                Log.d("TransactionInputActivi","null")
+                Toast.makeText(
+                    applicationContext,
+                    "Data tidak boleh ada kosong",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                spinKitLoading.visibility = View.VISIBLE
+                val item = ItemEntity(
+                    edName.text.toString(),
+                    edAmount.text.toString(),
+                    edPrice.text.toString()
+                )
+                clickListener(item)
+
+            }
+
 
         }
     }

@@ -113,4 +113,14 @@
         android:textColor="@color/colorPrimary"
         app:icon="@drawable/ic_next_arrow"
         app:iconTint="@color/colorPrimary" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:visibility="gone"
+        android:id="@+id/spinKitLoading"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/colorPrimaryDark" />
 </RelativeLayout>

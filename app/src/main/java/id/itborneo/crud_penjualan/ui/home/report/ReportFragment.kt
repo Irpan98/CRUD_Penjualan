@@ -46,7 +46,7 @@ class ReportFragment : Fragment() {
         val factory = ViewModelFactory.getInstance(requireActivity().application)
         viewModel = ViewModelProvider(requireActivity(), factory)[TransactionViewModel::class.java]
 
-        viewModel.getTransactionItems().observe(requireActivity(), { items ->
+        viewModel.getTransactionItems().observe(this, { items ->
 
             tvTotalTransaction.text = items.size.toString()
 

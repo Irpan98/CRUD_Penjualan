@@ -23,5 +23,6 @@
     <string name="total">Total</string>
     <string name="insert">Insert</string>
     <string name="silahkan_mengisi_password_untuk_menjaga_keamanan_akun_anda">Silahkan mengisi Password untuk menjaga Keamanan akun anda</string>
+    <string name="edit">Edit</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
